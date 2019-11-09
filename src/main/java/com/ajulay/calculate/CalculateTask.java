@@ -49,7 +49,7 @@ public class CalculateTask extends RecursiveTask<Integer> {
                 task.fork();
                 return sum + task.join();
             }
-            if (!needToRight && newMaxClaster.getPosition() > start - 1) {
+            if (!needToRight && newMaxClaster.getPosition() > start + 1) {
                 CalculateTask task = new CalculateTask(clasters, start, newMaxClaster.getPosition(), Boolean.FALSE, newMaxClaster);
                 task.fork();
                 return sum + task.join();
@@ -64,7 +64,7 @@ public class CalculateTask extends RecursiveTask<Integer> {
         final int allSquare = lowLevelValue * (Math.abs(start - end) - 1);
         int sumValue = 0;
         if (start == maxClaster.getPosition() || maxClaster.getPosition() == end) {
-            for (int i = start + 1; i < end; i++) {
+            for (int i = start + 1; i < end - 1; i++) {
                 sumValue += clasters.get(i).getValue();
             }
         }
