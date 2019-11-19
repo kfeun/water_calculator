@@ -1,7 +1,7 @@
-package com.ajulay;
+package com.kfeun;
 
-import com.ajulay.calculate.CalculateTask;
-import com.ajulay.model.Claster;
+import com.kfeun.calculate.CalculateTask;
+import com.kfeun.model.Claster;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -38,8 +38,6 @@ class Claster2ApplicationTests {
                 new Claster(0, 15)
         );
     }
-
-    ;
 
     @Test
     void contextLoads() {

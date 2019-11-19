@@ -1,6 +1,6 @@
-package com.ajulay.calculate;
+package com.kfeun.calculate;
 
-import com.ajulay.model.Claster;
+import com.kfeun.model.Claster;
 import lombok.AllArgsConstructor;
 
 import java.util.Comparator;
@@ -83,7 +83,7 @@ public class CalculateTask extends RecursiveTask<Integer> {
 
     private Claster getMax(int start, int end) { //right
         if (maxClaster == null) {
-            return clasters.parallelStream().max(Comparator.comparingInt(Claster::getValue)).orElse(null);
+            return clasters.stream().max(Comparator.comparingInt(Claster::getValue)).orElse(null);
         }
         final int maxClasterPosition = maxClaster.getPosition();
         final int range = end - start;

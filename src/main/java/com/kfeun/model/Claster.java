@@ -1,4 +1,4 @@
-package com.ajulay.model;
+package com.kfeun.model;
 
 
 import lombok.AllArgsConstructor;
