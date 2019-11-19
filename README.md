@@ -1,4 +1,4 @@
-# Claster
+# Claster task
 A method for calculating water volume.
 
 Branch master contains solution of the task using ForkJoin framework with recursion. It's for experiment purpose only. Branch simple_solution contains most common solution of this task via for loop and finding the highest left and right point of the landscape.
