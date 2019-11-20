@@ -59,29 +59,14 @@ public class CalculateTask extends RecursiveTask<Integer> {
         }
     }
 
-    private int calculate(final int start, final int end) {
-        final int lowLevelValue = Math.min(clasters.get(start).getValue(), clasters.get(end).getValue());
-        final int allSquare = lowLevelValue * (Math.abs(start - end) - 1);
-        int sumValue = 0;
-        if (start == maxClaster.getPosition() || maxClaster.getPosition() == end) {
-            for (int i = start + 1; i < end - 1; i++) {
-                sumValue += clasters.get(i).getValue();
-            }
-        }
-        return allSquare - sumValue;
-    }
-
-    private int calculateInternalValue(Claster start, Claster end) {
-        if (end == null || start == null) {
-            return 0;
-        }
-        if (start.getPosition() < end.getPosition()) {
-            return calculate(start.getPosition(), end.getPosition());
-        }
-        return calculate(end.getPosition(), start.getPosition());
-    }
-
-    private Claster getMax(int start, int end) { //right
+    /**
+     * Get cluster with max value of the position
+     *
+     * @param start start position
+     * @param end   end position
+     * @return max cluster
+     */
+    private Claster getMax(int start, int end) {
         if (maxClaster == null) {
             return clasters.stream().max(Comparator.comparingInt(Claster::getValue)).orElse(null);
         }
@@ -96,4 +81,35 @@ public class CalculateTask extends RecursiveTask<Integer> {
         return null;
     }
 
+    /**
+     * Calculate internal value of water in square between start and end
+     *
+     * @param start start position
+     * @param end   end position
+     * @return value of water
+     */
+    private int calculateInternalValue(Claster start, Claster end) {
+        if (end == null || start == null) {
+            return 0;
+        }
+        if (start.getPosition() < end.getPosition()) {
+            return calculate(start.getPosition(), end.getPosition());
+        }
+        return calculate(end.getPosition(), start.getPosition());
+    }
+
+    /**
+     * Service method for calculateInternalValue
+     */
+    private int calculate(final int start, final int end) {
+        final int lowLevelValue = Math.min(clasters.get(start).getValue(), clasters.get(end).getValue());
+        final int allSquare = lowLevelValue * (Math.abs(start - end) - 1);
+        int sumValue = 0;
+        if (start == maxClaster.getPosition() || maxClaster.getPosition() == end) {
+            for (int i = start + 1; i < end - 1; i++) {
+                sumValue += clasters.get(i).getValue();
+            }
+        }
+        return allSquare - sumValue;
+    }
 }

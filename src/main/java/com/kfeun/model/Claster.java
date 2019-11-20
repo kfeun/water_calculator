@@ -8,8 +8,13 @@ import lombok.Getter;
 @AllArgsConstructor
 public class Claster {
 
-    private final int value;
-
+    /**
+     * Number of the position
+     */
     private final int position;
 
+    /**
+     * Value of the position
+     */
+    private final int value;
 }
